@@ -27,7 +27,9 @@ public class ListarForm extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		String[] colunas = new String[] { "Chassi", "Modelo", "Preço" };
+		String[] colunas = new String[] {
+				"Chassi", "Montadora", "Modelo", "Tipo", "Cor", "Motorização", "Câmbio", "Preço"
+		};
 		JTable tabela = new JTable();
 		DefaultTableModel dtm = new DefaultTableModel();
 		JScrollPane scroll = new JScrollPane();
@@ -38,15 +40,33 @@ public class ListarForm extends JFrame {
 		switch (flag) {
 			case 1: {
 				setTitle("Listar Carro");
-				for(Carro c : loja.carros) {
-					dtm.addRow(new Object[]{c.getChassi(), c.getModelo(), c.getPreco()});
+				for(Carro v : loja.carros) {
+					dtm.addRow(new Object[]{
+							v.getChassi(),
+							v.getMontadora(),
+							v.getModelo(),
+							v.getTipo(),
+							v.getCor(),
+							v.getMotorizacao(),
+							v.getCambio(),
+							v.getPreco()
+					});
 				}
 				break;
 			}
 			case 2: {
 				setTitle("Listar Motocicleta");
-				for(Motocicleta m: loja.motocicletas) {
-					dtm.addRow(new Object[]{m.getChassi(), m.getModelo(), m.getPreco()});
+				for(Motocicleta v : loja.motocicletas) {
+					dtm.addRow(new Object[]{
+							v.getChassi(),
+							v.getMontadora(),
+							v.getModelo(),
+							v.getTipo(),
+							v.getCor(),
+							v.getMotorizacao(),
+							v.getCambio(),
+							v.getPreco()
+					});
 				}
 				break;
 			}

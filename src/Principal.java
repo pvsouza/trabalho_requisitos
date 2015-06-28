@@ -12,7 +12,9 @@ import javax.swing.JMenuItem;
 
 import model.Carro;
 import model.Loja;
-import view.AdicionarForm;
+import view.AdicionarCarroForm;
+import view.AdicionarMotocicletaForm;
+import view.BuscarForm;
 import view.ListarForm;
 
 import java.awt.event.ActionListener;
@@ -66,22 +68,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmAdicionar = new JMenuItem("Adicionar");
 		mntmAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (loja.getCarros().size()>0) {
-				for(Carro c : loja.getCarros()) {
-					System.out.println(c.getChassi());
-				}
-				}
-				AdicionarForm frm = new AdicionarForm(1, loja);
+				AdicionarCarroForm frm = new AdicionarCarroForm(loja);
 				frm.setVisible(true);
 			}
 		});
 		mnNewMenu_1.add(mntmAdicionar);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Pesquisar");
-		mnNewMenu_1.add(mntmNewMenuItem);
-		
-		JMenuItem mntmBuscar = new JMenuItem("Buscar");
-		mnNewMenu_1.add(mntmBuscar);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
@@ -96,13 +87,13 @@ public class Principal extends JFrame {
 		menuBar.add(mnMotociclet);
 		
 		JMenuItem menuItem = new JMenuItem("Adicionar");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AdicionarMotocicletaForm frm = new AdicionarMotocicletaForm(loja);
+				frm.setVisible(true);
+			}
+		});
 		mnMotociclet.add(menuItem);
-		
-		JMenuItem menuItem_1 = new JMenuItem("Pesquisar");
-		mnMotociclet.add(menuItem_1);
-		
-		JMenuItem menuItem_2 = new JMenuItem("Buscar");
-		mnMotociclet.add(menuItem_2);
 		
 		JMenuItem menuItem_3 = new JMenuItem("Listar");
 		menuItem_3.addActionListener(new ActionListener() {
@@ -112,6 +103,18 @@ public class Principal extends JFrame {
 			}
 		});
 		mnMotociclet.add(menuItem_3);
+		
+		JMenu mnPesquisar = new JMenu("Pesquisar");
+		menuBar.add(mnPesquisar);
+		
+		JMenuItem mntmBuscar = new JMenuItem("Buscar");
+		mntmBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				BuscarForm frm = new BuscarForm(loja);
+				frm.setVisible(true);
+			}
+		});
+		mnPesquisar.add(mntmBuscar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
